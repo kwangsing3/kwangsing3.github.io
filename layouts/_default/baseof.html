@@ -1,0 +1,81 @@
+<html>
+
+{{ partial "head/head.html" . }}
+
+<body class="line-numbers">
+
+    {{ $script := resources.Get "js/initColors.js" }}
+    <script src="{{ $script.RelPermalink }}"></script>
+
+    <svg aria-hidden="true" focusable="false"
+         style="position:absolute;width:0;height:0;overflow:hidden">
+      <defs>
+        <filter id="lava-goo"
+                x="-50%" y="-50%" width="200%" height="200%"
+                color-interpolation-filters="sRGB">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="17" result="blur"/>
+          <feColorMatrix in="blur" type="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 28 -12" result="goo"/>
+        </filter>
+      </defs>
+    </svg>
+
+    <div class="lava-lamp" aria-hidden="true">
+      <div class="lava-blobs">
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+        <div class="blob b3"></div>
+        <div class="blob b4"></div>
+        <div class="blob b5"></div>
+        <div class="blob b6"></div>
+        <div class="blob b7"></div>
+        <div class="blob b8"></div>
+      </div>
+    </div>
+
+    <div class="lava-overlay" aria-hidden="true"></div>
+
+    <div class="layout-styled">
+
+        {{ partial "header.html" . }}
+
+        {{ block "main" . }}
+
+        {{ end }}
+
+        {{ partial "footer.html" . }}
+
+    </div>
+
+    {{ $script := resources.Get "js/prism.js" }}
+    <script src="{{ $script.RelPermalink }}"></script>
+
+    <script>
+    (function() {
+        function updateThemeVars(isLight) {
+            var suffix = isLight ? 'light' : 'dark';
+            var el = document.documentElement;
+            var style = getComputedStyle(el);
+            // 用實際顏色值讓瀏覽器能做 smooth interpolation
+            el.style.setProperty('--lava-overlay-color', style.getPropertyValue('--lava-overlay-' + suffix).trim());
+            el.style.setProperty('--glass-bg',           'var(--glass-bg-'     + suffix + ')');
+            el.style.setProperty('--glass-border',       'var(--glass-border-' + suffix + ')');
+            el.style.setProperty('--glass-shadow',       'var(--glass-shadow-' + suffix + ')');
+            el.style.setProperty('--bio-text',           'var(--bio-text-'     + suffix + ')');
+            el.style.setProperty('--footer-text',        'var(--footer-text-'  + suffix + ')');
+            el.style.setProperty('--social-icon',        'var(--social-icon-'  + suffix + ')');
+        }
+
+        var toggleBtn = document.getElementById('themeColorButton');
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function() {
+                setTimeout(function() {
+                    updateThemeVars(localStorage.getItem('isLight') === 'true');
+                }, 50);
+            });
+        }
+    })();
+    </script>
+</body>
+
+</html>

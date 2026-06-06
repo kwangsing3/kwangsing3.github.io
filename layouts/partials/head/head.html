@@ -9,6 +9,19 @@
     <link rel="stylesheet" href="{{ $prism.RelPermalink }}" />
     <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/custom.css">
+    <script>
+        (function() {
+            var suffix = localStorage.getItem('isLight') === 'true' ? 'light' : 'dark';
+            var el = document.documentElement;
+            el.style.setProperty('--lava-overlay-color', 'var(--lava-overlay-' + suffix + ')');
+            el.style.setProperty('--glass-bg',           'var(--glass-bg-'     + suffix + ')');
+            el.style.setProperty('--glass-border',       'var(--glass-border-' + suffix + ')');
+            el.style.setProperty('--glass-shadow',       'var(--glass-shadow-' + suffix + ')');
+            el.style.setProperty('--bio-text',           'var(--bio-text-'     + suffix + ')');
+            el.style.setProperty('--footer-text',        'var(--footer-text-'  + suffix + ')');
+            el.style.setProperty('--social-icon',        'var(--social-icon-'  + suffix + ')');
+        })();
+    </script>
     {{ partial "seo/print.html" . }}
     {{ with .Params.forestry_instant_preview_id }}
       {{- safeHTML (printf "<meta property='forestry_instant_preview_id' content='%s'>" .) -}}

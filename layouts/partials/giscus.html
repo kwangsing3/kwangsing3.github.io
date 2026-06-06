@@ -39,8 +39,7 @@ var toggleBtn = document.getElementById('themeColorButton');
 if (toggleBtn) {
     toggleBtn.addEventListener('click', function() {
         setTimeout(function() {
-            var theme = localStorage.getItem('isLight') === 'true' ? 'light' : 'dark';
-            setGiscusTheme(theme);
+            setGiscusTheme(localStorage.getItem('isLight') === 'true' ? 'light' : 'dark');
         }, 50);
     });
 }
