@@ -10,16 +10,10 @@ paginate = 6
 [params]
 defaultHero = "/images/hero-11.jpg"
 
-[params.social]
-twitter= "https://twitter.com/forestryio"
-github= "https://github.com/forestryio/novela-hugo-starter"
-linkedin= "https://www.linkedin.com/company/forestry.io"
-instagram = "#"
-dribbble = "#"
-youtube = "#"
 
 [taxonomies]
 author = "authors"
+tag = "tags"
 
 [params.giscus]
 enabled = true

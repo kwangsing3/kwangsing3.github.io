@@ -1,0 +1,13 @@
+<aside class="tag-nav">
+  <h3 class="tag-nav-title">標籤</h3>
+  <ul class="tag-nav-list">
+    {{ range $name, $taxonomy := site.Taxonomies.tags }}
+    <li class="tag-nav-item">
+      <a href="{{ $taxonomy.Page.RelPermalink }}" class="tag-nav-link">
+        <span class="tag-nav-name">{{ $name }}</span>
+        <span class="tag-nav-count">{{ len $taxonomy }}</span>
+      </a>
+    </li>
+    {{ end }}
+  </ul>
+</aside>

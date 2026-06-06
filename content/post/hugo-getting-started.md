@@ -5,6 +5,9 @@ hero: /images/hero-2.jpg
 excerpt: Hugo 是目前最快的靜態網站生成器之一，從安裝到第一個頁面上線只需要幾分鐘。
 authors:
   - kwangsing3
+tags:
+  - Hugo
+  - 靜態網站
 ---
 
 Hugo 是一個用 Go 語言撰寫的靜態網站生成器，以速度著稱。即使網站有上千篇文章，build 時間通常也在幾秒內完成。

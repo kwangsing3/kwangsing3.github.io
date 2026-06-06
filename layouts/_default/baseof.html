@@ -14,8 +14,8 @@
                 x="-50%" y="-50%" width="200%" height="200%"
                 color-interpolation-filters="sRGB">
           <feGaussianBlur in="SourceGraphic" stdDeviation="17" result="blur"/>
-          <feColorMatrix in="blur" type="matrix"
-            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 28 -12" result="goo"/>
+          <feColorMatrix id="lava-goo-cm" in="blur" type="matrix"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 4 -0.5" result="goo"/>
         </filter>
       </defs>
     </svg>
@@ -51,6 +51,25 @@
     <script src="{{ $script.RelPermalink }}"></script>
 
     <script>
+    (function() {
+        var cm = document.getElementById('lava-goo-cm');
+        if (cm) {
+            var start = null;
+            var duration = 4000;
+            function animate(ts) {
+                if (!start) start = ts;
+                var t = Math.min((ts - start) / duration, 1);
+                var eased = t * t;
+                var contrast = 4 + (28 - 4) * eased;
+                var offset = -0.5 + (-12 - (-0.5)) * eased;
+                cm.setAttribute('values',
+                    '1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 ' +
+                    contrast.toFixed(2) + ' ' + offset.toFixed(2));
+                if (t < 1) requestAnimationFrame(animate);
+            }
+            requestAnimationFrame(animate);
+        }
+    })();
     (function() {
         function updateThemeVars(isLight) {
             var suffix = isLight ? 'light' : 'dark';

@@ -5,6 +5,9 @@ hero: /images/hero-3.jpg
 excerpt: 一套簡單、容易遵守的 Git 工作流程，適合個人專案與小型團隊。
 authors:
   - kwangsing3
+tags:
+  - Git
+  - 工作流程
 ---
 
 Git 的指令不難，難的是在團隊裡建立一致的習慣。這裡分享一套我日常使用的工作流程，簡單到可以在任何規模的專案裡落地。

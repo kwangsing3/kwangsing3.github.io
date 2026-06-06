@@ -5,6 +5,9 @@ hero: /images/hero-4.jpg
 excerpt: TypeScript 不只是加型別而已，這五個技巧能讓程式碼更簡潔、更安全。
 authors:
   - kwangsing3
+tags:
+  - TypeScript
+  - 前端
 ---
 
 用 TypeScript 一段時間後，會發現很多人只是把它當「會報錯的 JavaScript」在用。其實善用型別系統可以少寫很多防禦性程式碼。
