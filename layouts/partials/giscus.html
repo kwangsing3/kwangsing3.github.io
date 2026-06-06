@@ -1,17 +1,48 @@
 {{ if .Site.Params.giscus.enabled }}
-<script src="https://giscus.app/client.js"
-    data-repo="{{ .Site.Params.giscus.repo }}"
-    data-repo-id="{{ .Site.Params.giscus.repoId }}"
-    data-category="{{ .Site.Params.giscus.category }}"
-    data-category-id="{{ .Site.Params.giscus.categoryId }}"
-    data-mapping="{{ default "pathname" .Site.Params.giscus.mapping }}"
-    data-strict="{{ default "0" .Site.Params.giscus.strict }}"
-    data-reactions-enabled="{{ default "1" .Site.Params.giscus.reactionsEnabled }}"
-    data-emit-metadata="{{ default "0" .Site.Params.giscus.emitMetadata }}"
-    data-input-position="{{ default "bottom" .Site.Params.giscus.inputPosition }}"
-    data-theme="{{ default "preferred_color_scheme" .Site.Params.giscus.theme }}"
-    data-lang="{{ default "zh-TW" .Site.Params.giscus.lang }}"
-    crossorigin="anonymous"
-    async>
+<div class="giscus"></div>
+
+<script>
+(function() {
+    var theme = localStorage.getItem('isLight') === 'true' ? 'light' : 'dark';
+
+    var script = document.createElement('script');
+    script.src = 'https://giscus.app/client.js';
+    script.setAttribute('data-repo', '{{ .Site.Params.giscus.repo }}');
+    script.setAttribute('data-repo-id', '{{ .Site.Params.giscus.repoId }}');
+    script.setAttribute('data-category', '{{ .Site.Params.giscus.category }}');
+    script.setAttribute('data-category-id', '{{ .Site.Params.giscus.categoryId }}');
+    script.setAttribute('data-mapping', '{{ default "pathname" .Site.Params.giscus.mapping }}');
+    script.setAttribute('data-strict', '{{ default "0" .Site.Params.giscus.strict }}');
+    script.setAttribute('data-reactions-enabled', '{{ default "1" .Site.Params.giscus.reactionsEnabled }}');
+    script.setAttribute('data-emit-metadata', '{{ default "0" .Site.Params.giscus.emitMetadata }}');
+    script.setAttribute('data-input-position', '{{ default "bottom" .Site.Params.giscus.inputPosition }}');
+    script.setAttribute('data-theme', theme);
+    script.setAttribute('data-lang', '{{ default "zh-TW" .Site.Params.giscus.lang }}');
+    script.setAttribute('crossorigin', 'anonymous');
+    script.async = true;
+    document.currentScript
+        ? document.currentScript.parentNode.appendChild(script)
+        : document.querySelector('.giscus').appendChild(script);
+})();
+
+function setGiscusTheme(theme) {
+    var iframe = document.querySelector('iframe.giscus-frame');
+    if (iframe) {
+        iframe.contentWindow.postMessage(
+            { giscus: { setConfig: { theme: theme } } },
+            'https://giscus.app'
+        );
+    }
+}
+
+var toggleBtn = document.getElementById('themeColorButton');
+if (toggleBtn) {
+    toggleBtn.addEventListener('click', function() {
+        setTimeout(function() {
+            var theme = localStorage.getItem('isLight') === 'true' ? 'light' : 'dark';
+            setGiscusTheme(theme);
+        }, 50);
+    });
+}
 </script>
 {{ end }}

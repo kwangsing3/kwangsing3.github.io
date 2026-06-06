@@ -1,0 +1,125 @@
+<section class="section nartrow">
+    <div id="articlesList" class="articles-list-container show-details">
+        {{ $posts := partialCached "func/GetArticles" . "articles" }}
+        {{ $paginator := .Paginate $posts }}
+        {{ $biggerFirst := true }}
+        {{ $biggerPlaced := false }}
+        {{ range $index, $article := $paginator.Pages }}
+            {{ $counter := mod $index 2 }}
+            {{ if not $counter }}
+                <div class="post-row">
+            {{ end }}
+            <a href="{{ $article.RelPermalink }}" class="article-link"
+            {{ if and (eq ($biggerFirst) true) (eq ($biggerPlaced) false) }}
+              {{ if eq $counter 0 }}
+                id="article-link-bigger"
+                {{ $biggerPlaced = true }}
+              {{ end }}
+            {{ else if and (not $biggerFirst) (not $biggerPlaced) }}
+              {{ if ne $counter 0 }}
+                id="article-link-bigger"
+                {{ $biggerPlaced = true }}
+              {{ end }}
+            {{ end }}>
+              <div class="article-data-outer">
+                <div class="image-container">
+                  <img src="{{ $article.Params.hero }}" class="article-image" />
+                </div>
+                <div class="article-data">
+                  <h2 class="article-title">
+                    {{ $article.Params.title }}
+                  </h2>
+                  <p class="article-excerpt">
+                    {{ $article.Params.excerpt }}
+                  </p>
+                  <div class="article-metadata">
+                    {{ $article.Date.Format "January 2, 2006" }}
+                  </div>
+                </div>
+              </div>
+            </a>
+            {{ $counter := mod (add $index 1) 2 }}
+            {{ $len := (where .Pages "Type" "posts") }}
+            {{ if or (eq $counter 0) (eq (add $index 1) $len) }}
+                </div>
+                {{ $biggerPlaced = false }}
+                {{ if $biggerFirst }}
+                  {{ $biggerFirst = false }}
+                {{ else }}
+                  {{ $biggerFirst = true }}
+                {{ end }}
+            {{ end }}
+        {{ end }}
+    </div>
+    {{ partial "paginator/paginator.html" . }}
+</section>
+
+
+<!-- 熔岩燈背景 | 嵌入到 layouts/partials/lava-bg.html -->
+<!-- 配色: bg=#292929 blob-a=#ff5500 blob-b=#ffaa00 -->
+<div id="lava-bg" aria-hidden="true">
+  <div id="lava-filter"></div>
+</div>
+
+<style>
+#lava-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+#lava-filter {
+  position: absolute;
+  inset: 0;
+  background-color: #292929;
+  filter: blur(40px) contrast(20);
+}
+.lava-blob {
+  position: absolute;
+  border-radius: 50%;
+  aspect-ratio: 1;
+}
+</style>
+
+<script>
+(function() {
+  const BG = '#292929';
+  const COL_A = '#ff5500';
+  const COL_B = '#ffaa00';
+  const SIZE = 23;   /* 氣泡大小 % */
+  const SPEED = 0.20;  /* 速度倍率 */
+
+  const blobs = [
+    {cx:32,cy:62,rx:28,ry:24,s:1.0,ph:0,  col:COL_A},
+    {cx:68,cy:34,rx:24,ry:30,s:.8, ph:2.1,col:COL_A},
+    {cx:50,cy:80,rx:30,ry:20,s:1.2,ph:4.5,col:COL_B},
+    {cx:22,cy:26,rx:20,ry:28,s:.9, ph:1.5,col:COL_A},
+    {cx:76,cy:68,rx:18,ry:22,s:1.1,ph:3.2,col:COL_B},
+    {cx:55,cy:50,rx:16,ry:18,s:.7, ph:5.8,col:COL_A},
+  ];
+
+  const layer = document.getElementById('lava-filter');
+  const els = blobs.map(b => {
+    const d = document.createElement('div');
+    d.className = 'lava-blob';
+    d.style.width = SIZE + '%';
+    d.style.background = b.col;
+    layer.appendChild(d);
+    return d;
+  });
+
+  function tick(ts) {
+    const t = ts / 1000;
+    blobs.forEach((b, i) => {
+      const x = b.cx + Math.sin(t * b.s * SPEED + b.ph) * b.rx;
+      const y = b.cy + Math.cos(t * b.s * SPEED * .73 + b.ph * 1.4) * b.ry;
+      els[i].style.left = x + '%';
+      els[i].style.top  = y + '%';
+      els[i].style.transform = 'translate(-50%,-50%)';
+    });
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>

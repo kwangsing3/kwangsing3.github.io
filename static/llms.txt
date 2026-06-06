@@ -1,0 +1,13 @@
+# kwangsing3's Blog
+
+> 軟體開發者的技術筆記，涵蓋網站開發、工具使用與程式設計經驗分享。
+
+## 文章
+
+- [用 Hugo 建立靜態網站](https://kwangsing3.github.io/post/hugo-getting-started/): Hugo 靜態網站生成器的入門介紹，從安裝到部署。
+- [日常開發的 Git 工作流程](https://kwangsing3.github.io/post/git-workflow/): 適合個人與小型團隊的 Git 分支策略與 commit 規範。
+- [五個讓 TypeScript 更好用的技巧](https://kwangsing3.github.io/post/typescript-tips/): TypeScript 進階型別技巧，包含 satisfies、template literal types 等。
+
+## 關於
+
+作者：kwangsing3，軟體開發者，專注於前後端開發與開發工具。
