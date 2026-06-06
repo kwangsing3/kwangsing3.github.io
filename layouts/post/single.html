@@ -6,9 +6,18 @@
 
     {{ partial "article/progress" . }}
 
-    <article id="articleContent" class="post-content" style="position:relative;">
-        {{ .Content }}
-    </article>
+    <div class="article-layout">
+        <article id="articleContent" class="post-content">
+            {{ .Content }}
+        </article>
+
+        {{ if .TableOfContents }}
+        <aside class="article-toc">
+            <p class="toc-title">目錄</p>
+            {{ .TableOfContents }}
+        </aside>
+        {{ end }}
+    </div>
 
     {{ partial "article/next.html" . }}
 

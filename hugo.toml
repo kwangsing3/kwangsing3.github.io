@@ -7,6 +7,13 @@ theme = "github.com/forestryio/hugo-theme-novela"
 
 paginate = 6
 
+[markup]
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+  [markup.goldmark.renderer]
+    unsafe = true
+
 [params]
 defaultHero = "/images/hero-11.jpg"
 

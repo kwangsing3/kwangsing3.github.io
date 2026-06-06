@@ -1,19 +1,12 @@
-<section id="articleHero" class="section narrow">
-    <div class="article-hero">
-        <header class="article-header">
-            <h1 class="article-hero-heading">{{ .Page.Params.Title }}</h1>
-            <div class="article-hero-subtitle">
-                <div class="article-meta">
-                    {{ partial "article/authors.html" . }}
-                    {{ .Page.Date.Format "January 2, 2006" }}
-                </div>
-            </div>
-        </header>
-        {{ $hero := .Page.Params.hero | default .Site.Params.defaultHero }}
-        {{ with $hero }}
-        <div class="article-hero-image" id="ArticleImage__Hero">
-            <img src="{{ . }}">
+{{ $hero := .Page.Params.hero | default .Site.Params.defaultHero }}
+<div id="articleHero" class="article-hero-banner"
+     {{ with $hero }}style="background-image: url('{{ . }}')"{{ end }}>
+    <div class="article-hero-overlay"></div>
+    <div class="article-hero-content">
+        <h1 class="article-hero-heading">{{ .Page.Params.Title }}</h1>
+        <div class="article-hero-meta">
+            {{ partial "article/authors.html" . }}
+            {{ .Page.Date.Format "January 2, 2006" }}
         </div>
-        {{ end }}
     </div>
-</section>
+</div>

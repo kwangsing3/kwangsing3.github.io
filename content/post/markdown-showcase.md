@@ -1,7 +1,7 @@
 ---
 title: Markdown 完整語法展示
 date: 2026-06-06
-hero: /images/hero-2.jpg
+hero: /images/hero-4.jpg
 excerpt: 一篇涵蓋所有 Markdown 語法的參考文章，包含標題、清單、表格、程式碼、引用等完整特性。
 authors:
   - kwangsing3
