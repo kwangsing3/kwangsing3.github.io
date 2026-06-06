@@ -1,3 +1,33 @@
-baseURL = 'https://example.org/'
-locale = 'en-us'
+baseURL = 'https://kwangsing3.github.io/'
+locale = 'zh-tw'
 title = 'My New Hugo Project'
+
+# Novela settings
+theme = "github.com/forestryio/hugo-theme-novela"
+
+paginate = 6
+
+[params.social]
+twitter= "https://twitter.com/forestryio"
+github= "https://github.com/forestryio/novela-hugo-starter"
+linkedin= "https://www.linkedin.com/company/forestry.io"
+instagram = "#"
+dribbble = "#"
+youtube = "#"
+
+[taxonomies]
+author = "authors"
+
+[params.giscus]
+enabled = true
+repo = "kwangsing3/kwangsing3.github.io"
+repoId = "R_kgDOSywZxg"
+category = "General"
+categoryId = "DIC_kwDOSywZxs4C-oQc"
+mapping = "pathname"
+strict = "0"
+reactionsEnabled = "1"
+emitMetadata = "0"
+inputPosition = "bottom"
+theme = "preferred_color_scheme"
+lang = "zh-TW"
