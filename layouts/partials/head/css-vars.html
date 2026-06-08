@@ -1,0 +1,33 @@
+{{- $t := .Site.Params.theme -}}
+<style>
+@property --lava-overlay-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: {{ $t.lavaOverlayLight }};
+}
+:root {
+  --lava-overlay-light: {{ $t.lavaOverlayLight }};
+  --lava-overlay-dark:  {{ $t.lavaOverlayDark }};
+  --lava-bg:            {{ $t.lavaBg }};
+  --glass-bg-light:     {{ $t.glassBgLight }};
+  --glass-bg-dark:      {{ $t.glassBgDark }};
+  --glass-border-light: {{ $t.glassBorderLight }};
+  --glass-border-dark:  {{ $t.glassBorderDark }};
+  --glass-shadow-light: {{ $t.glassShadowLight }};
+  --glass-shadow-dark:  {{ $t.glassShadowDark }};
+  --bio-text-light:     {{ $t.bioTextLight }};
+  --bio-text-dark:      {{ $t.bioTextDark }};
+  --footer-text-light:  {{ $t.footerTextLight }};
+  --footer-text-dark:   {{ $t.footerTextDark }};
+  --social-icon-light:  {{ $t.socialIconLight }};
+  --social-icon-dark:   {{ $t.socialIconDark }};
+  /* defaults (overridden by inline JS before first paint) */
+  --lava-overlay-color: var(--lava-overlay-light);
+  --glass-bg:     var(--glass-bg-light);
+  --glass-border: var(--glass-border-light);
+  --glass-shadow: var(--glass-shadow-light);
+  --bio-text:     var(--bio-text-light);
+  --footer-text:  var(--footer-text-light);
+  --social-icon:  var(--social-icon-light);
+}
+</style>

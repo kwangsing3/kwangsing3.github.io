@@ -1,0 +1,48 @@
+.layout-styled {
+  background: transparent !important;
+}
+
+#progressBar.aside-container {
+  height: 0;
+  overflow: visible;
+  z-index: 100;
+}
+
+.aside-align {
+  z-index: 100;
+}
+
+.articles-gradient,
+.footer-gradient {
+  display: none;
+}
+
+body,
+.article-title,
+.article-excerpt,
+.post-content,
+.bio-text {
+  font-family: "Noto Serif TC", "Merriweather", serif;
+}
+
+.bio-text {
+  color: var(--bio-text);
+}
+
+.footer-container {
+  color: var(--footer-text);
+}
+
+.social-icon-image path {
+  fill: var(--social-icon);
+}
+
+@media (max-width: 768px) {
+  .article-data-outer,
+  .post-content,
+  .article-toc,
+  .tag-nav {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}

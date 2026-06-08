@@ -17,6 +17,27 @@ paginate = 6
 [params]
 defaultHero = "/images/hero-11.jpg"
 
+[params.theme]
+  lavaOverlayLight = "rgba(210, 170, 100, 0.76)"
+  lavaOverlayDark  = "rgba(40, 40, 45, 0.78)"
+  lavaBg           = "#1a0e02"
+  glassBgLight     = "rgba(255, 255, 255, 0.55)"
+  glassBgDark      = "rgba(26, 31, 28, 0.6)"
+  glassBorderLight = "rgba(255, 255, 255, 0.8)"
+  glassBorderDark  = "rgba(255, 255, 255, 0.08)"
+  glassShadowLight = "rgba(0, 0, 0, 0.1)"
+  glassShadowDark  = "rgba(0, 0, 0, 0.4)"
+  bioTextLight     = "rgb(19, 19, 19)"
+  bioTextDark      = "rgba(255, 255, 255, 0.75)"
+  footerTextLight  = "#363636"
+  footerTextDark   = "rgba(255, 255, 255, 0.5)"
+  socialIconLight  = "#363636"
+  socialIconDark   = "rgba(255, 255, 255, 0.5)"
+  logoText         = "#E9DAAC"
+
+[params.Colors]
+  primary = "#E9DAAC"
+
 
 [taxonomies]
 author = "authors"

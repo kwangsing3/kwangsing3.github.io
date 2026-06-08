@@ -7,19 +7,26 @@
     <link rel="stylesheet" href="{{ $style.RelPermalink }}">
     {{ $prism := resources.Get "css/prism.css" }}
     <link rel="stylesheet" href="{{ $prism.RelPermalink }}" />
+    {{ $custom := slice
+        (resources.Get "css/base.css")
+        (resources.Get "css/lava.css")
+        (resources.Get "css/layout.css")
+        (resources.Get "css/article.css")
+      | resources.Concat "css/custom.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $custom.RelPermalink }}">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/custom.css">
+    {{ partial "head/css-vars.html" . }}
     <script>
         (function() {
             var suffix = localStorage.getItem('isLight') === 'true' ? 'light' : 'dark';
             var el = document.documentElement;
             el.style.setProperty('--lava-overlay-color', 'var(--lava-overlay-' + suffix + ')');
-            el.style.setProperty('--glass-bg',           'var(--glass-bg-'     + suffix + ')');
-            el.style.setProperty('--glass-border',       'var(--glass-border-' + suffix + ')');
-            el.style.setProperty('--glass-shadow',       'var(--glass-shadow-' + suffix + ')');
-            el.style.setProperty('--bio-text',           'var(--bio-text-'     + suffix + ')');
-            el.style.setProperty('--footer-text',        'var(--footer-text-'  + suffix + ')');
-            el.style.setProperty('--social-icon',        'var(--social-icon-'  + suffix + ')');
+            el.style.setProperty('--glass-bg',     'var(--glass-bg-'     + suffix + ')');
+            el.style.setProperty('--glass-border', 'var(--glass-border-' + suffix + ')');
+            el.style.setProperty('--glass-shadow', 'var(--glass-shadow-' + suffix + ')');
+            el.style.setProperty('--bio-text',     'var(--bio-text-'     + suffix + ')');
+            el.style.setProperty('--footer-text',  'var(--footer-text-'  + suffix + ')');
+            el.style.setProperty('--social-icon',  'var(--social-icon-'  + suffix + ')');
         })();
     </script>
     {{ partial "seo/print.html" . }}
