@@ -1,6 +1,6 @@
 baseURL = 'https://kwangsing3.github.io/'
 locale = 'zh-tw'
-title = 'My New Hugo Project'
+title = '勃勃生機，萬物競發'
 
 # Novela settings
 theme = "github.com/forestryio/hugo-theme-novela"

@@ -21,7 +21,7 @@
 @property --lava-overlay-color {
   syntax: "<color>";
   inherits: true;
-  initial-value: rgba(240, 230, 210, 0.78);
+  initial-value: rgba(210, 240, 223, 0.78);
 }
 
 /* =============================================
@@ -29,7 +29,7 @@
    ============================================= */
 :root {
   /* 淺色主題 */
-  --lava-overlay-light: rgba(240, 230, 210, 0.78);
+  --lava-overlay-light: rgba(238, 210, 170, 0.76);
   --glass-bg-light: rgba(255, 255, 255, 0.55);
   --glass-border-light: rgba(255, 255, 255, 0.8);
   --glass-shadow-light: rgba(0, 0, 0, 0.1);
@@ -463,12 +463,26 @@ body,
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: #120a05;
+  background: #1a0e02;
   overflow: hidden;
   opacity: 0;
   filter: blur(45px);
   animation: lava-fade-in 2.5s ease forwards;
+  scale: 1.1;
 }
+.lava-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: var(--lava-overlay-color);
+  pointer-events: none;
+  transition: background 0.1s;
+}
+/* 
+.layout-styled,
+.lava-overlay {
+  display: none;
+} */
 
 @keyframes lava-fade-in {
   to {
@@ -699,14 +713,7 @@ body,
     border-radius: 50%;
   }
 }
-.lava-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background: var(--lava-overlay-color);
-  pointer-events: none;
-  transition: background 0.1s;
-}
+
 @media (prefers-reduced-motion: reduce) {
   .blob {
     animation: none !important;

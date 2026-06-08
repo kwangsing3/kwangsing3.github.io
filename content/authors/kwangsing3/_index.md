@@ -7,4 +7,6 @@ featured: true
 social:
   - title: github
     url: https://github.com/kwangsing3
+hero:
+  heading: 我想要的標題
 ---
