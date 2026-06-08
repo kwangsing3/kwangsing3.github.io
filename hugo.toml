@@ -18,11 +18,11 @@ paginate = 6
 defaultHero = "/images/hero-11.jpg"
 
 [params.theme]
-  lavaOverlayLight = "rgba(210, 170, 100, 0.76)"
+  lavaOverlayLight = "rgba(253, 224, 174, 0.76)"
   lavaOverlayDark  = "rgba(40, 40, 45, 0.78)"
   lavaBg           = "#1a0e02"
   glassBgLight     = "rgba(255, 255, 255, 0.55)"
-  glassBgDark      = "rgba(26, 31, 28, 0.6)"
+  glassBgDark      = "rgba(67, 67, 67, 0.6)"
   glassBorderLight = "rgba(255, 255, 255, 0.8)"
   glassBorderDark  = "rgba(255, 255, 255, 0.08)"
   glassShadowLight = "rgba(0, 0, 0, 0.1)"
